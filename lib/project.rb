@@ -24,12 +24,13 @@ class Project
   attr_accessor :backers
   attr_reader :title
   
-  def initialize(title)
-    @title = title
-    @backers = []
+  def initialize(title)   # takes a title on initialization, accessible through an attribute reader
+    @title = title 
+    @backers = []      # initializes with a @backers attribute, an empty array
   end
   
-  def add_backer(backer)
+  def add_backer(backer)   # accepts a Backer as an argument and stores it in a backers array
+        ProjectBacker.new(self, backer)
     @backers << backer
     backer.backed_projects << self
   end
